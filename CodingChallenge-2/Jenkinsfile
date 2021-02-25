@@ -13,7 +13,7 @@ pipeline {
                sh 'echo $JOB_NAME'
                 sh 'echo $BUILD_NUMBER'
                 sh 'echo Fetch'
-               git branch: 'master', url: 'https://github.com/roshenreji/SpringChallenge.git'
+               git 'https://github.com/roshenreji/SpringChallenge.git'
             }
         }
         
