@@ -29,7 +29,7 @@ pipeline {
                 steps{
                  
                 
-                        sh 'mvn -f CodingChallenge-2 validate'
+                        bat 'mvn -f CodingChallenge-2 validate'
                     
                 }
             
@@ -38,8 +38,8 @@ pipeline {
                 steps{
                     
                  
-                        sh 'echo  Compile'
-                         sh 'mvn -f CodingChallenge-2 compile'
+                        bat 'echo  Compile'
+                         bat 'mvn -f CodingChallenge-2 compile'
                      
                 }
             
@@ -49,8 +49,8 @@ pipeline {
              stage('Test'){
                  steps {
                      
-                         sh 'echo Test'
-                         sh 'mvn -f CodingChallenge-2 test'
+                         bat 'echo Test'
+                         bat 'mvn -f CodingChallenge-2 test'
                       }
              
                  post{
@@ -65,7 +65,7 @@ pipeline {
                  
                     withSonarQubeEnv('sonar-server'){
                         withMaven(maven:'Maven'){
-                            sh 'mvn -f CodingChallenge-2 sonar:sonar'
+                            bat 'mvn -f CodingChallenge-2 sonar:sonar'
                         
                         
                   
@@ -91,8 +91,8 @@ pipeline {
             steps {
                  
                 
-                        sh 'echo Build'
-                        sh 'mvn -f CodingChallenge-2 package -Dbuild.number=-${BUILD_NUMBER}'
+                        bat 'echo Build'
+                        bat 'mvn -f CodingChallenge-2 package -Dbuild.number=-${BUILD_NUMBER}'
                  
             }
             
@@ -150,7 +150,7 @@ rtDownload (
 
    
             sshagent(['88937939-1f6c-4ce3-abf3-4596f847bc3b']){
-                    sh 'ssh -r C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/CodingChallengeRoshen-2/target/*.jar ubuntu@34.212.236.92:/home/ubuntu/artifacts'
+                    bat 'ssh -r C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/CodingChallengeRoshen-2/target/*.jar ubuntu@34.212.236.92:/home/ubuntu/artifacts'
         }
         }
         failure{
